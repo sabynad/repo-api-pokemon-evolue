@@ -1,0 +1,89 @@
+*{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    background-image: url(../image/wallpaper-pikachu-pokemon-fond-ecran-4K-HD-manga-mobile-desktop-ordinateur-tablette-scaled.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+main{
+    width: 50%;
+    margin: auto;
+    background-color: rgba(135,206,250, 0.6);
+    
+}
+
+@font-face{
+    font-family: "pokemon titre";
+    src: url(../front/Pokemon\ Solid.ttf);
+}
+
+h1{
+    font-size: 2rem;
+    text-align: center;
+    font-family: "pokemon titre";
+    color: #EBE450;
+    text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+}
+ 
+.cont-recherche{
+    /* border: 1px solid green; */
+    width: 0 auto;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.cont-choix{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.choix-liste1{
+    padding-right: 1.5rem;
+}
+
+#cadre_liste{ 
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+fieldset{
+    width: 35rem;
+    height: 6rem;
+}
+
+.btn-search{
+    text-align: center;
+    display: flex;
+}
+    
+.cont-information{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+#image{
+    
+}
+
+img{
+    width: 80%;
+}
+
+#stats{
+    /* border: 2px solid pink; */
+    width: 35%;
+    height: 20rem;
+    line-height: 2.3rem;
+}
