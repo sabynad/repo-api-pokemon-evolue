@@ -73,8 +73,12 @@ fieldset{
     justify-content: center;
 }
 
-#image{
-    
+ul{
+    line-height: 2.5rem;
+}
+
+li{
+    list-style: none;
 }
 
 img{
