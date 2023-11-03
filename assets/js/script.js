@@ -1,9 +1,8 @@
 console.log("test code");
-let elementsPokemons;
+let elementsPokemons = [];
 let arrayPokemons=[];
-
+// INITIALISATION - DEBUT
 // ---------------------------------récupération de l'API listes éléments pokemons----------------
-
 await getAllElementPokemons();
 console.log("Voici les éléments pokemon via fetch: ", elementsPokemons);
 
@@ -47,7 +46,40 @@ for (let index = 0; index < arrayPokemons.length; index++) {
     menuOption.innerText = arrayPokemons[index].name;
     menuSelection.appendChild(menuOption);   
 }
-namePokemon();
+// INITIALISATION - FIN
+//
+// -----------------------------------Action sur changement bouton radio----------------------------
+document.querySelectorAll("input[type='radio']").forEach(radio => {
+    radio.addEventListener("change", (eventChange) => {
+        menuSelection.options.length = 0 ;
+        if (eventChange.target.value == "par-nom") {
+            for (let index = 0; index < arrayPokemons.length; index++) {
+                let menuOption = document.createElement("option");
+                menuOption.innerText = arrayPokemons[index].name;
+                menuSelection.appendChild(menuOption);    
+            }
+        } else {
+            for (let index = 0; index < elementsPokemons.length; index++) {
+                let menuOption = document.createElement("option");
+                menuOption.innerText = elementsPokemons[index].name;
+                menuSelection.appendChild(menuOption);    
+            }
+        }
+        
+    })
+});
+// ON SUREVEILLE LE CHANGEMENT DE VALEUR DE LA SELECT
+//
+menuSelection.addEventListener("change", () => {
+    document.querySelector("#image").innerHTML = ""; // Permet de pas additionner les images a chaque selection
+    document.querySelector("#stats").innerHTML = "";  // Permet de pas additionner les competences a chaque selection
+    if (document.querySelector("input[type='radio']:checked").value == "par-nom") {
+        //remplissage div stats et images avec données du pokemon
+    } else {
+        //remplissage du contenu html avec la liste des pokemon du type sélectionné
+    }
+})
+
 function namePokemon() {
     menuSelection.addEventListener("change", function () {
       // On ne récupère les informations du pokemon que si la valeur de select est différente de 0 "--Selection--"
@@ -82,40 +114,13 @@ function namePokemon() {
           }    
     })
   }
-// ----------------------------------- liste pokemons click menu d'eroulant----------------------------
-document.getElementById("choix1").addEventListener("click", () => {
-    menuSelection.options.length = 0 ;
-    for (let index = 0; index < arrayPokemons.length; index++) {
-        let menuOption = document.createElement("option");
-        menuOption.innerText = arrayPokemons[index].name;
-        menuSelection.appendChild(menuOption);   
-      
-    }
-    namePokemon()
-    
-})
-//------------------------------------ liste elements click  menu d'éroulant--------------------------
-document.getElementById("choix2").addEventListener("click", () => {
-    menuSelection.options.length = 0 ;
-    for (let index = 0; index < elementsPokemons.length; index++) {
-        let menuOption = document.createElement("option");
-        menuOption.innerText = elementsPokemons[index].name;
-        menuSelection.appendChild(menuOption);   
-        // console.log(elementsPokemons[index].name);
-    } 
-    document.querySelector("#element").innerText = "";   
-    nameElement()
-})
-
-
 function nameElement() {
 
     menuSelection.addEventListener("change", function () {
         document.querySelector("#element").innerText = "";
     // console.log("arrayPokemon :",arrayPokemons)
     let valuePoke = menuSelection.value;
-    const poke = arrayPokemons.filter(pokemon => {
-    return pokemon.apiTypes.some(type => type.name === valuePoke); 
+    const poke = arrayPokemons.filter(pokemon => { pokemon.apiTypes.some(type => type.name === valuePoke); 
     });
    let listeElement = document.createElement("ul");
    document.querySelector("#element").appendChild(listeElement);
@@ -123,19 +128,12 @@ function nameElement() {
         
         let uneListeElement = document.createElement("li");
         uneListeElement.innerText = poke[i].name;
-
-        // integrer les petits images de pokemon sur chaque elements listés
-        // for (let a = 0; a < arrayPokemons.length; a++){
-        //     if (arrayPokemons[a].name == listeElement[i].name){
-        //         imgSprite.setAttribute("src",arrayPokemons[a].sprite);  
-        //     }               
-        // }   
-        // let imgSprite = document.createElement("sprite");
-        // imgSprite.classList.add("img-sprite");
-        // uneListeElement.appendChild(imgSprite);
-
-
+    
         listeElement.appendChild(uneListeElement);
+
+            const typeChoisi = elementsPokemons.find((type) => type.name == menuSelection.value);
+        document.querySelector(".image-element").setAttribute("src", typeChoisi.image);
+
         // console.log(poke[i].name)
     }
   })

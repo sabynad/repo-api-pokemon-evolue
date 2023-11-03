@@ -20,12 +20,12 @@
                     <div class="cont-choix">
                         <div class="choix-liste1">
                             <!-- bouton de choix par nom (checked mis apres les guillemets value coche la case sur directement)-->
-                            <input type="radio" id="choix1" name="nom" value="" checked/>
+                            <input type="radio" id="choix1" name="nom" value="par-nom" checked/>
                             <label for="choix1" name="nom">Par Nom</label>
                         </div>
                         <div class="choix-liste2">
                              <!-- bouton de choix par element -->
-                             <input type="radio" id="choix2" name="nom" value="">
+                             <input type="radio" id="choix2" name="nom" value="par-element">
                              <label for="choix2" name="element">Par Element</label>
                              <!-- menu deroulant selection (ajout de l'id mais coder sur JS) -->  
                         </div>
@@ -36,7 +36,9 @@
         
                     <!-- conteneur avec image et stats traitement et API recuperer via JS -->
             <div class="cont-information">
-                <div id="image"></div>
+                <div id="image">
+                    <img class="image-element" />
+                </div>
                 <div id="stats"></div>
                 <div id="element"></div>
             </div>               

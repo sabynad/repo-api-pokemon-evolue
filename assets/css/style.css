@@ -73,13 +73,7 @@ fieldset{
     justify-content: center;
 }
 
-ul{
-    line-height: 2.5rem;
-}
 
-li{
-    list-style: none;
-}
 
 img{
     width: 80%;
@@ -90,4 +84,18 @@ img{
     width: 35%;
     height: 20rem;
     line-height: 2.3rem;
+}
+
+#element ul li{
+    list-style: none;
+}
+
+#element ul{
+    line-height: 2.5rem;
+}
+#element{
+    overflow: auto;  
+    /* barre deroulante */
+    height: 19rem;
+    width: 10rem;
 }
