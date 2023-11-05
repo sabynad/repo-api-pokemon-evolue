@@ -50,8 +50,18 @@ for (let index = 0; index < arrayPokemons.length; index++) {
 //
 // -----------------------------------Action sur changement bouton radio----------------------------
 document.querySelectorAll("input[type='radio']").forEach(radio => {
+   
     radio.addEventListener("change", (eventChange) => {
-        menuSelection.options.length = 0 ;
+     
+        menuSelection.options.length = 0;
+        let selectionParDefaut = document.createElement("option");
+        selectionParDefaut.textContent = "--Sélection--";
+        // selectionParDefaut.value = 0;
+        menuSelection.appendChild(selectionParDefaut);
+        
+       
+        console.log(menuSelection);
+        console.log(menuSelection.options);
         if (eventChange.target.value == "par-nom") {
             for (let index = 0; index < arrayPokemons.length; index++) {
                 let menuOption = document.createElement("option");
@@ -65,9 +75,12 @@ document.querySelectorAll("input[type='radio']").forEach(radio => {
                 menuSelection.appendChild(menuOption);    
             }
         }
-        
+        console.log(menuSelection);
+        console.log(menuSelection.options);
     })
 });
+
+
 // ON SUREVEILLE LE CHANGEMENT DE VALEUR DE LA SELECT
 //
 menuSelection.addEventListener("change", () => {
@@ -75,10 +88,12 @@ menuSelection.addEventListener("change", () => {
     document.querySelector("#stats").innerHTML = "";  // Permet de pas additionner les competences a chaque selection
     if (document.querySelector("input[type='radio']:checked").value == "par-nom") {
         //remplissage div stats et images avec données du pokemon
-    } else {
+    } else { 
         //remplissage du contenu html avec la liste des pokemon du type sélectionné
     }
 })
+
+
 
 function namePokemon() {
     menuSelection.addEventListener("change", function () {
